@@ -1,0 +1,20 @@
+<div>
+  <h1>Game of Life Calculator</h1>
+
+  <mat-form-field appearance="fill">
+    <mat-label>How many players?</mat-label>
+    <mat-select [(value)]="playerCount" (selectionChange)="playerCountUpdated($event)">
+      <mat-option>None</mat-option>
+      <mat-option value="2">2</mat-option>
+      <mat-option value="3">3</mat-option>
+      <mat-option value="4">4</mat-option>
+      <mat-option value="5">5</mat-option>
+      <mat-option value="6">6</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="playerCount > 0">
+    Continue with {{playerCount}} players...
+    <button mat-flat-button color="primary" routerLink="player">Continue</button>
+  </div>
+</div>

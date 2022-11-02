@@ -1,0 +1,10 @@
+<div>
+  Hello, Player {{ currentPlayer }}. Please enter your name:
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput #nameInput>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="updatePlayerName()">Next</button>
+  </form>
+</div>
