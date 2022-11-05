@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-money',
@@ -27,7 +28,7 @@ export class MoneyComponent implements OnInit {
     this.sumFiftyThousands +
     this.sumHundredThousands;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
@@ -52,5 +53,14 @@ export class MoneyComponent implements OnInit {
 
   updateHundredThousands() {
     this.sumHundredThousands = this.countHundredThousands * 100000;
+  }
+
+  updateTotalAndProceedToLifeTiles() {
+    sessionStorage.setItem(
+      `player${this.currentPlayer}Money`,
+      this.sumTotal.toString()
+    );
+
+    this.router.navigate(['life-tiles']);
   }
 }
