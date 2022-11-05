@@ -21,12 +21,7 @@ export class MoneyComponent implements OnInit {
   sumFiftyThousands = 0;
   sumHundredThousands = 0;
 
-  sumTotal =
-    this.sumFiveThousands +
-    this.sumTenThousands +
-    this.sumTwentyThousands +
-    this.sumFiftyThousands +
-    this.sumHundredThousands;
+  sumTotal = 0;
 
   constructor(private router: Router) {}
 
@@ -37,22 +32,36 @@ export class MoneyComponent implements OnInit {
 
   updateFiveThousands() {
     this.sumFiveThousands = this.countFiveThousands * 5000;
+    this.updateSumTotal();
   }
 
   updateTenThousands() {
     this.sumTenThousands = this.countTenThousands * 10000;
+    this.updateSumTotal();
   }
 
   updateTwentyThousands() {
     this.sumTwentyThousands = this.countTwentyThousands * 20000;
+    this.updateSumTotal();
   }
 
   updateFiftyThousands() {
     this.sumFiftyThousands = this.countFiftyThousands * 50000;
+    this.updateSumTotal();
   }
 
   updateHundredThousands() {
     this.sumHundredThousands = this.countHundredThousands * 100000;
+    this.updateSumTotal();
+  }
+
+  updateSumTotal() {
+    this.sumTotal =
+      this.sumFiveThousands +
+      this.sumTenThousands +
+      this.sumTwentyThousands +
+      this.sumFiftyThousands +
+      this.sumHundredThousands;
   }
 
   updateTotalAndProceedToLifeTiles() {
