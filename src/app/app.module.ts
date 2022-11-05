@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MoneyComponent } from './pages/money/money.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
