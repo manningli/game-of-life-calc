@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/GameOfLifeCalc"
+  publish = "dist/game-of-life-calc"
   command = "ng build --configuration production"
 [[redirects]]
   from = "/*"
