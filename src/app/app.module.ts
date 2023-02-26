@@ -19,6 +19,8 @@ import { MoneyComponent } from './pages/money/money.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { LifeTilesComponent } from './pages/life-tiles/life-tiles.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { PlayerDetailsComponent } from './pages/player-details/player-details.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { LifeTilesComponent } from './pages/life-tiles/life-tiles.component';
     MoneyComponent,
     PageNotFoundComponent,
     LifeTilesComponent,
+    PlayerDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { LifeTilesComponent } from './pages/life-tiles/life-tiles.component';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

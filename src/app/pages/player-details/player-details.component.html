@@ -1,0 +1,32 @@
+<mat-stepper linear="false" #stepper>
+
+  <mat-step [stepControl]="playerNameFormGroup">
+    <form [formGroup]="playerNameFormGroup">
+      <ng-template matStepLabel>Player Name</ng-template>
+      <mat-form-field>
+        <mat-label>Player {{ playerIndex }} name:</mat-label>
+        <input matInput formControlName="playerName" minlength="1">
+      </mat-form-field>
+      <div>
+        <button mat-flat-button matStepperNext color="primary">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="cashSumFormGroup">
+    <form [formGroup]="cashSumFormGroup">
+      <ng-template matStepLabel>Cash</ng-template>
+      <!-- <app-money (sumTotal)="currentPlayer.cashSum"></app-money> -->
+      <app-money></app-money>
+    </form>
+
+    <!-- <button (click)="logTest()">log test</button> -->
+    <div>
+      <button mat-flat-button matStepperPrevious color="accent">back</button>
+      <button mat-flat-button matStepperNext color="primary">Next</button>
+    </div>
+  </mat-step>
+
+
+
+</mat-stepper>

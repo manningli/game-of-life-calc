@@ -1,4 +1,4 @@
-<div>
+<div class="home-div">
   <h1>Game of Life Calculator</h1>
 
   <mat-form-field appearance="fill">
@@ -14,7 +14,6 @@
   </mat-form-field>
 
   <div *ngIf="playerCount > 0">
-    Continue with {{playerCount}} players...
-    <button mat-flat-button color="primary" routerLink="player">Continue</button>
+    <button mat-flat-button color="primary" routerLink="player-details/1">Continue with {{playerCount}} players</button>
   </div>
 </div>

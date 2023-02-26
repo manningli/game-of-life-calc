@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,7 +21,7 @@ export class MoneyComponent implements OnInit {
   sumFiftyThousands = 0;
   sumHundredThousands = 0;
 
-  sumTotal = 0;
+  @Output() sumTotal = 0;
 
   constructor(private router: Router) {}
 

@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LifeTilesComponent } from './pages/life-tiles/life-tiles.component';
 import { MoneyComponent } from './pages/money/money.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PlayerDetailsComponent } from './pages/player-details/player-details.component';
 import { PlayerComponent } from './pages/player/player.component';
 
 const routes: Routes = [
@@ -16,6 +17,11 @@ const routes: Routes = [
     path: 'player',
     title: 'Game of Life Calculator | Player Info',
     component: PlayerComponent,
+  },
+  {
+    path: 'player-details/:player-index',
+    title: 'hollllaaaa',
+    component: PlayerDetailsComponent,
   },
   {
     path: 'money',
