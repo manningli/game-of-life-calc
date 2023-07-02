@@ -17,7 +17,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MoneyComponent } from './pages/money/money.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { LifeTilesComponent } from './pages/life-tiles/life-tiles.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { PlayerDetailsComponent } from './pages/player-details/player-details.component';
