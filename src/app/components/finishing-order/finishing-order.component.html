@@ -1,0 +1,21 @@
+<div class="finishing-order">
+  <div class="intro">
+    What order did you retire?
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Retirement Order</mat-label>
+      <mat-select (selectionChange)="retirementOrderChanged($event.value)">
+        <mat-option value="1" [disabled]="selectedRetirementOrders.includes(1)">1st to retire: Collect 400k</mat-option>
+        <mat-option value="2" [disabled]="selectedRetirementOrders.includes(2)">2nd to retire: Collect 300k</mat-option>
+        <mat-option value="3" [disabled]="selectedRetirementOrders.includes(3)">3rd to retire: Collect 200k</mat-option>
+        <mat-option value="4" [disabled]="selectedRetirementOrders.includes(4)">4th to retire: Collect 100k</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-button [disabled]="!selectedOrder" (click)="nextBtnClicked()">Next</button>
+  </div>
+</div>

@@ -1,15 +1,15 @@
 <header>
   <mat-toolbar color="primary">
-    <span>Game of Life Calculator</span>
+    <a [routerLink]="['/']" class="logo">Game of Life Calculator</a>
   </mat-toolbar>
 </header>
 
 <main>
-  <h1>content</h1>
+  <router-outlet></router-outlet>
 </main>
 
 <footer>
-  <mat-toolbar color="primary">
+  <mat-toolbar>
     <div class="footer-content">
       &copy; {{ currentYear }} Lama Developments
     </div>

@@ -1,1 +1,16 @@
-<p>home works!</p>
+<div class="intro">
+  Select how many players to calulcate scores for, then click start.
+</div>
+
+<div>
+  <mat-form-field>
+    <mat-label>How many players?</mat-label>
+    <mat-select (selectionChange)="playerCountChanged($event.value)">
+      <mat-option value="2">2</mat-option>
+      <mat-option value="3">3</mat-option>
+      <mat-option value="4">4</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<button mat-flat-button color="primary" [disabled]="playerCount === 0" (click)="startClicked()">Start</button>

@@ -1,0 +1,12 @@
+<mat-stepper [linear]="true" #stepper>
+  <mat-step label="Finishing Order" editable="false">
+    <ng-template matStepContent>
+      <app-finishing-order (nextClicked)="stepper.next()"></app-finishing-order>
+    </ng-template>
+  </mat-step>
+  <mat-step label="step 2">
+    <ng-template matStepContent editable="false">
+      <app-finishing-order (nextClicked)="stepper.next()"></app-finishing-order>
+    </ng-template>
+  </mat-step>
+</mat-stepper>
