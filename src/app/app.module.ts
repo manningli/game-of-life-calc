@@ -14,9 +14,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalculatorComponent } from './pages/calculator/calculator.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FinishingOrderComponent } from './components/finishing-order/finishing-order.component';
+import { HousesComponent } from './components/houses/houses.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CalculatorComponent, FinishingOrderComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    CalculatorComponent,
+    FinishingOrderComponent,
+    HousesComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,6 +37,7 @@ import { FinishingOrderComponent } from './components/finishing-order/finishing-
     ReactiveFormsModule,
     FormsModule,
     MatStepperModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

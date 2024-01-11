@@ -1,0 +1,39 @@
+<div class="houses">
+  <div class="intro">
+    How many houses do you have to sell?
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-select (selectionChange)="houseCountChanged($event.value)">
+        <mat-option value="1">1 house</mat-option>
+        <mat-option value="2">2 houses</mat-option>
+        <mat-option value="3">3 houses</mat-option>
+        <mat-option value="4">4 houses</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="houseCount > 0">
+    <p>Spin to find out how much {{ houses.length === 1 ? 'it\'s' : 'they\'re' }} worth
+      and enter the {{ houses.length === 1 ? 'value' : 'values' }} below:</p>
+
+    <div [formGroup]="form">
+      <div formArrayName="houses">
+        <div *ngFor="let house of houses.controls; let i = index">
+          <div [formGroupName]="i">
+            <mat-form-field>
+              <mat-label>House {{ i + 1 }} value:</mat-label>
+              <input matInput type="number" formControlName="houseValue">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button mat-flat-button (click)="backBtnClicked()" color="accent">Back</button>
+      <!-- TODO: dynamically set disabled state for next btn -->
+      <button mat-flat-button [disabled]="true" (click)="nextBtnClicked()" color="primary">Next</button>
+    </div>
+  </div>

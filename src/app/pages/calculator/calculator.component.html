@@ -1,12 +1,13 @@
 <mat-stepper [linear]="true" #stepper>
-  <mat-step label="Finishing Order" editable="false">
+  <!-- TODO: allow editable in local env? -->
+  <mat-step label="Finishing Order" editable="true">
     <ng-template matStepContent>
       <app-finishing-order (nextClicked)="stepper.next()"></app-finishing-order>
     </ng-template>
   </mat-step>
-  <mat-step label="step 2">
+  <mat-step label="Houses">
     <ng-template matStepContent editable="false">
-      <app-finishing-order (nextClicked)="stepper.next()"></app-finishing-order>
+      <app-houses (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-houses>
     </ng-template>
   </mat-step>
 </mat-stepper>
