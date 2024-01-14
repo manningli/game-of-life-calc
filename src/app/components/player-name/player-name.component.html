@@ -1,0 +1,16 @@
+<div class="player-name">
+  <div class="intro">
+    Player {{ currentPlayer }}, please enter your name:
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Player Name:</mat-label>
+      <input matInput type="text" [(ngModel)]="playerName">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-flat-button (click)="nextBtnClicked()" color="primary">Next</button>
+  </div>
+</div>

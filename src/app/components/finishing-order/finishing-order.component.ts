@@ -9,6 +9,7 @@ export class FinishingOrderComponent implements OnInit {
   selectedRetirementOrders: number[] = [];
   selectedOrder: number | undefined;
 
+  @Output() backClicked = new EventEmitter();
   @Output() nextClicked = new EventEmitter();
 
   ngOnInit(): void {
@@ -25,6 +26,16 @@ export class FinishingOrderComponent implements OnInit {
   }
 
   nextBtnClicked() {
+    this.setRetirementOrderAndBonus();
+    this.nextClicked.emit();
+  }
+
+  backBtnClicked() {
+    this.setRetirementOrderAndBonus();
+    this.backClicked.emit();
+  }
+
+  private setRetirementOrderAndBonus() {
     sessionStorage.setItem(
       'selectedRetirementOrders',
       this.selectedRetirementOrders.join(',')
@@ -36,11 +47,9 @@ export class FinishingOrderComponent implements OnInit {
       `player${currentPlayer}Sum`,
       this.getRetirementBonus()
     );
-
-    this.nextClicked.emit();
   }
 
-  getRetirementBonus(): string {
+  private getRetirementBonus(): string {
     switch (this.selectedOrder?.toString()) {
       case '1':
         return '400000';
