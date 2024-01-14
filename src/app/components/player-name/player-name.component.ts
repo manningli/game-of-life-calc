@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-player-name',
@@ -7,16 +8,28 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class PlayerNameComponent implements OnInit {
   currentPlayer = 0;
-  playerName = '';
+  playerName = new FormControl();
 
   @Output() nextClicked = new EventEmitter();
 
   ngOnInit(): void {
     this.currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
+
+    var existingName = sessionStorage.getItem(
+      `player${this.currentPlayer}Name`
+    );
+    this.playerName.setValue(existingName);
   }
 
   nextBtnClicked() {
-    sessionStorage.setItem(`player${this.currentPlayer}Name`, this.playerName);
+    sessionStorage.setItem(
+      `player${this.currentPlayer}Name`,
+      this.playerName.value
+    );
     this.nextClicked.emit();
+  }
+
+  shouldEnableNext() {
+    return this.playerName.value && this.playerName.value.length > 0;
   }
 }
