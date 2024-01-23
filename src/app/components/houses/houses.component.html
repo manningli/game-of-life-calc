@@ -33,7 +33,7 @@
 
     <div>
       <button mat-flat-button (click)="backBtnClicked()" color="accent">Back</button>
-      <!-- TODO: dynamically set disabled state for next btn -->
-      <button mat-flat-button [disabled]="true" (click)="nextBtnClicked()" color="primary">Next</button>
+      <button mat-flat-button [disabled]="!shouldEnableNextBtn()" (click)="nextBtnClicked()"
+        color="primary">Next</button>
     </div>
   </div>

@@ -48,7 +48,7 @@ export class HousesComponent implements OnInit {
     const houseForm = this.fb.group({
       houseValue: new FormControl<number | null>(
         { value: null, disabled: false },
-        { validators: Validators.required }
+        { validators: [Validators.required, Validators.min(1)] }
       ),
     });
 
@@ -84,5 +84,9 @@ export class HousesComponent implements OnInit {
       `player${currentPlayer}HouseSum`,
       houseValuesSum.toString()
     );
+  }
+
+  shouldEnableNextBtn() {
+    return this.form.valid;
   }
 }
