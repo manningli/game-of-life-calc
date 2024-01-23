@@ -18,6 +18,12 @@ export class FinishingOrderComponent implements OnInit {
         .getItem('selectedRetirementOrders')
         ?.split(',')
         .map(Number) ?? [];
+
+    const currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
+    const existingSum = sessionStorage.getItem(
+      `player${currentPlayer}RetirementOrder`
+    );
+    this.selectedOrder = existingSum ? +existingSum : undefined;
   }
 
   retirementOrderChanged(order: number) {
@@ -43,9 +49,14 @@ export class FinishingOrderComponent implements OnInit {
 
     const currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
 
+    // sessionStorage.setItem(
+    //   `player${currentPlayer}Sum`,
+    //   this.getRetirementBonus()
+    // );
+
     sessionStorage.setItem(
-      `player${currentPlayer}Sum`,
-      this.getRetirementBonus()
+      `player${currentPlayer}RetirementOrder`,
+      this.selectedOrder?.toString() ?? ''
     );
   }
 
@@ -62,5 +73,9 @@ export class FinishingOrderComponent implements OnInit {
       default:
         return '0';
     }
+  }
+
+  shouldEnableNext() {
+    return this.selectedOrder;
   }
 }
