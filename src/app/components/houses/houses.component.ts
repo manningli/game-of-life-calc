@@ -87,6 +87,6 @@ export class HousesComponent implements OnInit {
   }
 
   shouldEnableNextBtn() {
-    return this.form.valid;
+    return this.houseCount > 0 && this.form.valid;
   }
 }
