@@ -6,12 +6,13 @@
   <div>
     <mat-form-field>
       <mat-label>Retirement Order</mat-label>
-      <mat-select (selectionChange)="retirementOrderChanged($event.value)" panelWidth="262px" required>
-        <mat-option value="1" [disabled]="selectedRetirementOrders.includes(1)">1st to retire: Collect 400k</mat-option>
-        <mat-option value="2" [disabled]="selectedRetirementOrders.includes(2)">2nd to retire: Collect 300k</mat-option>
-        <mat-option value="3" [disabled]="selectedRetirementOrders.includes(3)">3rd to retire: Collect 200k</mat-option>
-        <mat-option value="4" [disabled]="selectedRetirementOrders.includes(4)">4th to retire: Collect 100k</mat-option>
+      <mat-select panelWidth="262px" [formControl]="selectedOrder">
+        <!-- TODO: dynamically disable options selected by others -->
+        <mat-option *ngFor="let option of selectOptions" [value]="option">
+          {{ option.viewValue }}
+        </mat-option>
       </mat-select>
+      <mat-error>Select the order that you finished.</mat-error>
     </mat-form-field>
   </div>
 
