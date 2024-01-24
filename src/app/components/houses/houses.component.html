@@ -5,11 +5,10 @@
 
   <div>
     <mat-form-field>
-      <mat-select (selectionChange)="houseCountChanged($event.value)">
-        <mat-option value="1">1 house</mat-option>
-        <mat-option value="2">2 houses</mat-option>
-        <mat-option value="3">3 houses</mat-option>
-        <mat-option value="4">4 houses</mat-option>
+      <mat-select (selectionChange)="houseCountChanged($event.value)" [formControl]="houseCountSelection">
+        <mat-option *ngFor="let option of selectOptions" [value]="option">
+          {{ option.viewValue }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
   </div>

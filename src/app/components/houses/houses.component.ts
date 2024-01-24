@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { SelectOption } from 'src/app/shared/interfaces/select-option';
 
 @Component({
   selector: 'app-houses',
@@ -17,6 +18,17 @@ export class HousesComponent implements OnInit {
   playerSum = 0;
   houseCount = 0;
   form: FormGroup;
+  houseCountSelection = new FormControl<SelectOption | null>({
+    value: null,
+    disabled: false,
+  });
+
+  selectOptions: SelectOption[] = [
+    { value: '1', viewValue: '1 house' },
+    { value: '2', viewValue: '2 house' },
+    { value: '3', viewValue: '3 house' },
+    { value: '4', viewValue: '4 house' },
+  ];
 
   @Output() backClicked = new EventEmitter();
   @Output() nextClicked = new EventEmitter();
@@ -31,8 +43,17 @@ export class HousesComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
+    this.houseCount = Number(
+      sessionStorage.getItem(`player${this.currentPlayer}HouseCount`)
+    );
     this.playerSum = Number(
       sessionStorage.getItem(`player${this.currentPlayer}Sum`)
+    );
+
+    this.houseCountChanged(this.houseCount);
+    this.houseCountSelection.setValue(
+      this.selectOptions.find((o) => o.value === this.houseCount.toString()) ??
+        null
     );
   }
 
@@ -80,6 +101,10 @@ export class HousesComponent implements OnInit {
     });
 
     const currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
+    sessionStorage.setItem(
+      `player${currentPlayer}HouseCount`,
+      this.houseCount.toString()
+    );
     sessionStorage.setItem(
       `player${currentPlayer}HouseSum`,
       houseValuesSum.toString()
