@@ -100,13 +100,12 @@ export class HousesComponent implements OnInit {
       houseValuesSum += house.value.houseValue ?? 0;
     });
 
-    const currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
     sessionStorage.setItem(
-      `player${currentPlayer}HouseCount`,
+      `player${this.currentPlayer}HouseCount`,
       this.houseCount.toString()
     );
     sessionStorage.setItem(
-      `player${currentPlayer}HouseSum`,
+      `player${this.currentPlayer}HouseSum`,
       houseValuesSum.toString()
     );
   }
