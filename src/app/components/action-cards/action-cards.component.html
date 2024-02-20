@@ -1,0 +1,17 @@
+<div class="action-cards">
+  <div class="intro">
+    How many action cards do you have? Each action card will be worth $100k.
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Action Cards:</mat-label>
+      <input matInput type="number" [formControl]="actionCardsCount">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-flat-button (click)="backBtnClicked()" color="accent">Back</button>
+    <button mat-flat-button [disabled]="!shouldEnableNextBtn()" (click)="nextBtnClicked()" color="primary">Next</button>
+  </div>
+</div>

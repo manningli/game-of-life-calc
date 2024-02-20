@@ -1,18 +1,23 @@
 <mat-stepper [linear]="true" #stepper>
   <!-- TODO: allow editable in local env? -->
-  <mat-step label="Player Name" editable="true">
+  <mat-step label="Player Name">
     <ng-template matStepContent>
       <app-player-name (nextClicked)="stepper.next()"></app-player-name>
     </ng-template>
   </mat-step>
-  <mat-step label="Finishing Order" editable="true">
+  <mat-step label="Finishing Order">
     <ng-template matStepContent>
       <app-finishing-order (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-finishing-order>
     </ng-template>
   </mat-step>
   <mat-step label="Houses">
-    <ng-template matStepContent editable="false">
+    <ng-template matStepContent>
       <app-houses (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-houses>
+    </ng-template>
+  </mat-step>
+  <mat-step label="Action Cards">
+    <ng-template matStepContent>
+      <app-action-cards (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-action-cards>
     </ng-template>
   </mat-step>
 </mat-stepper>

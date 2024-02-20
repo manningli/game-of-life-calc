@@ -17,6 +17,7 @@ import { FinishingOrderComponent } from './components/finishing-order/finishing-
 import { HousesComponent } from './components/houses/houses.component';
 import { MatInputModule } from '@angular/material/input';
 import { PlayerNameComponent } from './components/player-name/player-name.component';
+import { ActionCardsComponent } from './components/action-cards/action-cards.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PlayerNameComponent } from './components/player-name/player-name.compon
     FinishingOrderComponent,
     HousesComponent,
     PlayerNameComponent,
+    ActionCardsComponent,
   ],
   imports: [
     BrowserModule,
