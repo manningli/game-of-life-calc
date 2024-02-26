@@ -13,13 +13,13 @@
     </mat-form-field>
   </div>
 
-  <div *ngIf="houseCount > 0">
-    <p>Spin to find out how much {{ houses.length === 1 ? 'it\'s' : 'they\'re' }} worth
-      and enter the {{ houses.length === 1 ? 'value' : 'values' }} below:</p>
+  <div *ngIf="houseControls.length > 0">
+    <p>Spin to find out how much {{ houseControls.length === 1 ? 'it\'s' : 'they\'re' }} worth
+      and enter the {{ houseControls.length === 1 ? 'value' : 'values' }} below:</p>
 
     <div [formGroup]="form">
       <div formArrayName="houses">
-        <div *ngFor="let house of houses.controls; let i = index">
+        <div *ngFor="let house of houseControls.controls; let i = index">
           <div [formGroupName]="i">
             <mat-form-field>
               <mat-label>House {{ i + 1 }} value:</mat-label>

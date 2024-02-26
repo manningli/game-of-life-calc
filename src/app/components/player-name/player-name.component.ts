@@ -1,31 +1,28 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Player } from 'src/app/shared/interfaces/player';
 
 @Component({
   selector: 'app-player-name',
   templateUrl: './player-name.component.html',
   styleUrls: ['./player-name.component.scss'],
 })
-export class PlayerNameComponent implements OnInit {
-  currentPlayer = 0;
+export class PlayerNameComponent {
+  currentPlayer: Player;
   playerName = new FormControl();
 
   @Output() nextClicked = new EventEmitter();
 
-  ngOnInit(): void {
-    this.currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
-
-    var existingName = sessionStorage.getItem(
-      `player${this.currentPlayer}Name`
+  constructor() {
+    this.currentPlayer = JSON.parse(
+      sessionStorage.getItem(`currentPlayer`) ?? '{}'
     );
-    this.playerName.setValue(existingName);
+    this.playerName.setValue(this.currentPlayer.name);
   }
 
   nextBtnClicked() {
-    sessionStorage.setItem(
-      `player${this.currentPlayer}Name`,
-      this.playerName.value
-    );
+    this.currentPlayer.name = this.playerName.value;
+    sessionStorage.setItem(`currentPlayer`, JSON.stringify(this.currentPlayer));
     this.nextClicked.emit();
   }
 

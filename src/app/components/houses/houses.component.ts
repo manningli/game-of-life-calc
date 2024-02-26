@@ -6,6 +6,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { House } from 'src/app/shared/interfaces/house';
+import { Player } from 'src/app/shared/interfaces/player';
 import { SelectOption } from 'src/app/shared/interfaces/select-option';
 
 @Component({
@@ -14,9 +16,7 @@ import { SelectOption } from 'src/app/shared/interfaces/select-option';
   styleUrls: ['./houses.component.scss'],
 })
 export class HousesComponent implements OnInit {
-  currentPlayer = 0;
-  playerSum = 0;
-  houseCount = 0;
+  currentPlayer: Player;
   form: FormGroup;
   houseCountSelection = new FormControl<SelectOption | null>({
     value: null,
@@ -25,15 +25,19 @@ export class HousesComponent implements OnInit {
 
   selectOptions: SelectOption[] = [
     { value: '1', viewValue: '1 house' },
-    { value: '2', viewValue: '2 house' },
-    { value: '3', viewValue: '3 house' },
-    { value: '4', viewValue: '4 house' },
+    { value: '2', viewValue: '2 houses' },
+    { value: '3', viewValue: '3 houses' },
+    { value: '4', viewValue: '4 houses' },
   ];
 
   @Output() backClicked = new EventEmitter();
   @Output() nextClicked = new EventEmitter();
 
   constructor(private fb: FormBuilder) {
+    this.currentPlayer = JSON.parse(
+      sessionStorage.getItem('currentPlayer') ?? '{}'
+    );
+
     this.form = this.fb.group({
       houses: this.fb.array<
         FormGroup<{ houseValue: FormControl<number | null> }>
@@ -42,22 +46,25 @@ export class HousesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
-    this.houseCount = Number(
-      sessionStorage.getItem(`player${this.currentPlayer}HouseCount`)
-    );
-    this.playerSum = Number(
-      sessionStorage.getItem(`player${this.currentPlayer}Sum`)
+    // TODO: use this reducer to sum the value of houses to determine winner
+    // this.playerSum =
+    //   this.currentPlayer.houses?.reduce(
+    //     (accumulator, house) => accumulator + (house.price ?? 0),
+    //     0
+    //   ) ?? 0;
+
+    this.houseCountSelection.setValue(
+      this.selectOptions.find(
+        (o) => o.value === this.currentPlayer.houses?.length.toString()
+      ) ?? null
     );
 
-    this.houseCountChanged(this.houseCount);
-    this.houseCountSelection.setValue(
-      this.selectOptions.find((o) => o.value === this.houseCount.toString()) ??
-        null
-    );
+    this.currentPlayer.houses?.forEach((house) => {
+      this.addExistingHouse(house);
+    });
   }
 
-  get houses(): FormArray<
+  get houseControls(): FormArray<
     FormGroup<{
       houseValue: FormControl<number | null>;
     }>
@@ -73,12 +80,22 @@ export class HousesComponent implements OnInit {
       ),
     });
 
-    this.houses.push(houseForm);
+    this.houseControls.push(houseForm);
+  }
+
+  private addExistingHouse(house: House) {
+    const houseForm = this.fb.group({
+      houseValue: new FormControl<number | null>(
+        { value: house.price ?? null, disabled: false },
+        { validators: [Validators.required, Validators.min(1)] }
+      ),
+    });
+
+    this.houseControls.push(houseForm);
   }
 
   houseCountChanged(newCount: number) {
-    this.houseCount = newCount;
-    this.houses.controls = [];
+    this.houseControls.controls = [];
     for (let index = 0; index < newCount; index++) {
       this.addHouse();
     }
@@ -95,22 +112,20 @@ export class HousesComponent implements OnInit {
   }
 
   private setHousesValue() {
-    var houseValuesSum = 0;
-    this.houses.controls.forEach((house) => {
-      houseValuesSum += house.value.houseValue ?? 0;
-    });
+    this.currentPlayer.houses = [];
+    for (let i = 0; i < this.houseControls.controls.length; i++) {
+      const house: House = {
+        number: i,
+        price: this.houseControls.controls[i].value.houseValue ?? 0,
+      };
 
-    sessionStorage.setItem(
-      `player${this.currentPlayer}HouseCount`,
-      this.houseCount.toString()
-    );
-    sessionStorage.setItem(
-      `player${this.currentPlayer}HouseSum`,
-      houseValuesSum.toString()
-    );
+      this.currentPlayer.houses.push(house);
+    }
+
+    sessionStorage.setItem('currentPlayer', JSON.stringify(this.currentPlayer));
   }
 
   shouldEnableNextBtn() {
-    return this.houseCount > 0 && this.form.valid;
+    return this.houseControls.length > 0 && this.form.valid;
   }
 }

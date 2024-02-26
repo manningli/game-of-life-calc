@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Player } from 'src/app/shared/interfaces/player';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,10 @@ export class HomeComponent implements OnInit {
   }
 
   startClicked() {
-    sessionStorage.setItem('currentPlayer', '1');
+    var currentPlayer: Player = {
+      number: 1,
+    };
+    sessionStorage.setItem('currentPlayer', JSON.stringify(currentPlayer));
     this.router.navigate(['calculator']);
   }
 }

@@ -6,12 +6,12 @@
   <div>
     <mat-form-field>
       <mat-label>Action Cards:</mat-label>
-      <input matInput type="number" [formControl]="actionCardsCount">
+      <input matInput type="number" [formControl]="actionCardsCount" min="0">
     </mat-form-field>
   </div>
 
   <div>
     <button mat-flat-button (click)="backBtnClicked()" color="accent">Back</button>
-    <button mat-flat-button [disabled]="!shouldEnableNextBtn()" (click)="nextBtnClicked()" color="primary">Next</button>
+    <button mat-flat-button (click)="nextBtnClicked()" color="primary">Next</button>
   </div>
 </div>

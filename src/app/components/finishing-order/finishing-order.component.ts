@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Player } from 'src/app/shared/interfaces/player';
 import { SelectOption } from 'src/app/shared/interfaces/select-option';
 
 @Component({
@@ -9,6 +10,7 @@ import { SelectOption } from 'src/app/shared/interfaces/select-option';
 })
 export class FinishingOrderComponent implements OnInit {
   selectedRetirementOrders: string[] = [];
+  currentPlayer: Player;
   selectedOrder = new FormControl<SelectOption | null>(
     { value: null, disabled: false },
     { validators: [Validators.required] }
@@ -23,16 +25,19 @@ export class FinishingOrderComponent implements OnInit {
   @Output() backClicked = new EventEmitter();
   @Output() nextClicked = new EventEmitter();
 
+  constructor() {
+    this.currentPlayer = JSON.parse(
+      sessionStorage.getItem('currentPlayer') ?? '{}'
+    );
+  }
+
   ngOnInit(): void {
     this.selectedRetirementOrders = this.getSelectedRetirementOrders();
 
-    const currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
-    const existingSum = sessionStorage.getItem(
-      `player${currentPlayer}RetirementOrder`
-    );
-
     this.selectedOrder.setValue(
-      this.selectOptions.find((o) => o.value === existingSum) ?? null
+      this.selectOptions.find(
+        (o) => o.value === this.currentPlayer.retirementOrder
+      ) ?? null
     );
   }
 
@@ -47,11 +52,8 @@ export class FinishingOrderComponent implements OnInit {
   }
 
   private setRetirementOrderAndBonus() {
-    const currentPlayer = Number(sessionStorage.getItem('currentPlayer'));
-    sessionStorage.setItem(
-      `player${currentPlayer}RetirementOrder`,
-      this.selectedOrder.value?.value ?? ''
-    );
+    this.currentPlayer.retirementOrder = this.selectedOrder.value?.value;
+    sessionStorage.setItem('currentPlayer', JSON.stringify(this.currentPlayer));
   }
 
   // private getRetirementBonus(): string {
@@ -77,10 +79,13 @@ export class FinishingOrderComponent implements OnInit {
   private getSelectedRetirementOrders(): string[] {
     var selectedOrders: string[] = [];
 
-    for (let i = 1; i <= 4; i++) {
-      selectedOrders.push(
-        sessionStorage.getItem(`player${i}RetirementOrder`) ?? ''
+    for (let i = 1; i <= this.currentPlayer.number; i++) {
+      var player: Player = JSON.parse(
+        sessionStorage.getItem(`player${i}`) ?? '{}'
       );
+      if (player.retirementOrder) {
+        selectedOrders.push(player.retirementOrder);
+      }
     }
 
     return selectedOrders;
