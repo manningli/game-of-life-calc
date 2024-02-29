@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Player } from 'src/app/shared/interfaces/player';
 
@@ -22,7 +22,7 @@ export class PetsComponent {
       sessionStorage.getItem('currentPlayer') ?? '{}'
     );
 
-    this.petsCount.setValue(this.currentPlayer.petsCount ?? 0);
+    this.petsCount.setValue(this.currentPlayer.petsCount ?? null);
   }
 
   nextBtnClicked() {

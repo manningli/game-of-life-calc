@@ -24,7 +24,7 @@ export class ActionCardsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.actionCardsCount.setValue(this.currentPlayer.actionCardsCount ?? 0);
+    this.actionCardsCount.setValue(this.currentPlayer.actionCardsCount ?? null);
   }
 
   nextBtnClicked() {
