@@ -1,0 +1,17 @@
+<div class="loans">
+  <div class="intro">
+    How many unpaid loans do you have? Each loan will be repaid at $60k per loan.
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Unpaid Loans:</mat-label>
+      <input matInput type="number" [formControl]="loansCount" min="0">
+    </mat-form-field>
+  </div>
+
+  <div class="stepper-navigation-buttons">
+    <button mat-flat-button (click)="backBtnClicked()" color="accent">Back</button>
+    <button mat-flat-button [disabled]="!shouldEnableNextBtn()" (click)="nextBtnClicked()" color="primary">Next</button>
+  </div>
+</div>

@@ -8,4 +8,5 @@ export interface Player {
   actionCardsCount?: number;
   petsCount?: number;
   babiesCount?: number;
+  loansCount?: number;
 }

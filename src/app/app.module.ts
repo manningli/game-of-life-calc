@@ -20,6 +20,7 @@ import { PlayerNameComponent } from './components/player-name/player-name.compon
 import { ActionCardsComponent } from './components/action-cards/action-cards.component';
 import { PetsComponent } from './components/pets/pets.component';
 import { BabiesComponent } from './components/babies/babies.component';
+import { LoansComponent } from './components/loans/loans.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { BabiesComponent } from './components/babies/babies.component';
     ActionCardsComponent,
     PetsComponent,
     BabiesComponent,
+    LoansComponent,
   ],
   imports: [
     BrowserModule,

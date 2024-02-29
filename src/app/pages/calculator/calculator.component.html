@@ -1,5 +1,4 @@
 <mat-stepper [linear]="true" #stepper>
-  <!-- TODO: allow editable in local env? -->
   <mat-step label="Player Name">
     <ng-template matStepContent>
       <app-player-name (nextClicked)="stepper.next()"></app-player-name>
@@ -28,6 +27,11 @@
   <mat-step label="Babies">
     <ng-template matStepContent>
       <app-babies (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-babies>
+    </ng-template>
+  </mat-step>
+  <mat-step label="Loans">
+    <ng-template matStepContent>
+      <app-loans (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-loans>
     </ng-template>
   </mat-step>
 </mat-stepper>
