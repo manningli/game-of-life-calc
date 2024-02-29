@@ -1,0 +1,17 @@
+<div class="pets">
+  <div class="intro">
+    How many pets do you have? Each pet will be worth $100k.
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Pets:</mat-label>
+      <input matInput type="number" [formControl]="petsCount" min="0">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-flat-button (click)="backBtnClicked()" color="accent">Back</button>
+    <button mat-flat-button (click)="nextBtnClicked()" color="primary">Next</button>
+  </div>
+</div>

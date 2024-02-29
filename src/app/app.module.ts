@@ -18,6 +18,7 @@ import { HousesComponent } from './components/houses/houses.component';
 import { MatInputModule } from '@angular/material/input';
 import { PlayerNameComponent } from './components/player-name/player-name.component';
 import { ActionCardsComponent } from './components/action-cards/action-cards.component';
+import { PetsComponent } from './components/pets/pets.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ActionCardsComponent } from './components/action-cards/action-cards.com
     HousesComponent,
     PlayerNameComponent,
     ActionCardsComponent,
+    PetsComponent,
   ],
   imports: [
     BrowserModule,

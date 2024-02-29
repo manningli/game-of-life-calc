@@ -20,4 +20,9 @@
       <app-action-cards (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-action-cards>
     </ng-template>
   </mat-step>
+  <mat-step label="Pets">
+    <ng-template matStepContent>
+      <app-pets (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-pets>
+    </ng-template>
+  </mat-step>
 </mat-stepper>

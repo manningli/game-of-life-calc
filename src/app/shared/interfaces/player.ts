@@ -6,4 +6,5 @@ export interface Player {
   retirementOrder?: string;
   houses?: House[];
   actionCardsCount?: number;
+  petsCount?: number;
 }
