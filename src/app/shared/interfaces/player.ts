@@ -7,4 +7,5 @@ export interface Player {
   houses?: House[];
   actionCardsCount?: number;
   petsCount?: number;
+  babiesCount?: number;
 }

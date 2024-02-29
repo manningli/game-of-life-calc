@@ -25,4 +25,9 @@
       <app-pets (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-pets>
     </ng-template>
   </mat-step>
+  <mat-step label="Babies">
+    <ng-template matStepContent>
+      <app-babies (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-babies>
+    </ng-template>
+  </mat-step>
 </mat-stepper>

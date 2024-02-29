@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { PlayerNameComponent } from './components/player-name/player-name.component';
 import { ActionCardsComponent } from './components/action-cards/action-cards.component';
 import { PetsComponent } from './components/pets/pets.component';
+import { BabiesComponent } from './components/babies/babies.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { PetsComponent } from './components/pets/pets.component';
     PlayerNameComponent,
     ActionCardsComponent,
     PetsComponent,
+    BabiesComponent,
   ],
   imports: [
     BrowserModule,
