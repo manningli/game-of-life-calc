@@ -39,4 +39,8 @@ export class BabiesComponent {
     this.currentPlayer.babiesCount = this.babiesCount.value ?? 0;
     sessionStorage.setItem('currentPlayer', JSON.stringify(this.currentPlayer));
   }
+
+  shouldEnableNextBtn() {
+    return this.babiesCount.value || this.babiesCount.value === 0;
+  }
 }

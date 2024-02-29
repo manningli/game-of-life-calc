@@ -39,4 +39,8 @@ export class PetsComponent {
     this.currentPlayer.petsCount = this.petsCount.value ?? 0;
     sessionStorage.setItem('currentPlayer', JSON.stringify(this.currentPlayer));
   }
+
+  shouldEnableNextBtn() {
+    return this.petsCount.value || this.petsCount.value === 0;
+  }
 }

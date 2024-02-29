@@ -41,4 +41,8 @@ export class ActionCardsComponent implements OnInit {
     this.currentPlayer.actionCardsCount = this.actionCardsCount.value ?? 0;
     sessionStorage.setItem('currentPlayer', JSON.stringify(this.currentPlayer));
   }
+
+  shouldEnableNextBtn() {
+    return this.actionCardsCount.value || this.actionCardsCount.value === 0;
+  }
 }
