@@ -21,6 +21,7 @@ import { ActionCardsComponent } from './components/action-cards/action-cards.com
 import { PetsComponent } from './components/pets/pets.component';
 import { BabiesComponent } from './components/babies/babies.component';
 import { LoansComponent } from './components/loans/loans.component';
+import { CashComponent } from './components/cash/cash.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LoansComponent } from './components/loans/loans.component';
     PetsComponent,
     BabiesComponent,
     LoansComponent,
+    CashComponent,
   ],
   imports: [
     BrowserModule,

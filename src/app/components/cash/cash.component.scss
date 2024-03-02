@@ -1,0 +1,24 @@
+table {
+  margin: auto;
+  border-spacing: 0;
+  margin-bottom: 16px;
+}
+
+td {
+  text-align: right;
+}
+
+.calculation-col {
+  min-width: 110px;
+}
+
+.sum-col {
+  min-width: 80px;
+}
+
+.totals-col {
+  border: 1px solid #000;
+  border-left: none;
+  border-right: none;
+  font-weight: bold;
+}

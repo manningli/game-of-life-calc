@@ -34,4 +34,9 @@
       <app-loans (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-loans>
     </ng-template>
   </mat-step>
+  <mat-step label="Cash">
+    <ng-template matStepContent>
+      <app-cash (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-cash>
+    </ng-template>
+  </mat-step>
 </mat-stepper>

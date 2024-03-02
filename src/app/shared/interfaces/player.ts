@@ -1,3 +1,4 @@
+import { Cash } from './cash';
 import { House } from './house';
 
 export interface Player {
@@ -9,4 +10,5 @@ export interface Player {
   petsCount?: number;
   babiesCount?: number;
   loansCount?: number;
+  cashCount?: Cash;
 }
