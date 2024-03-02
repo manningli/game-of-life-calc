@@ -56,27 +56,11 @@ export class FinishingOrderComponent implements OnInit {
     sessionStorage.setItem('currentPlayer', JSON.stringify(this.currentPlayer));
   }
 
-  // private getRetirementBonus(): string {
-  //   // switch (this.form.controls['selectedOrder'].value?.toString()) {
-  //   switch (this.selectedOrder.value?.value) {
-  //     case '1':
-  //       return '400000';
-  //     case '2':
-  //       return '300000';
-  //     case '3':
-  //       return '200000';
-  //     case '4':
-  //       return '100000';
-  //     default:
-  //       return '0';
-  //   }
-  // }
-
   shouldEnableNext() {
     return this.selectedOrder.valid;
   }
 
-  private getSelectedRetirementOrders(): string[] {
+  getSelectedRetirementOrders(): string[] {
     var selectedOrders: string[] = [];
 
     for (let i = 1; i <= this.currentPlayer.number; i++) {
