@@ -1,0 +1,25 @@
+table {
+  margin: auto;
+  border-spacing: 0;
+  margin-bottom: 16px;
+}
+
+.description-col {
+  text-align: left;
+  min-width: 150px;
+}
+
+.value-col {
+  text-align: right;
+}
+
+.loans-amount {
+  color: red;
+}
+
+.totals-col {
+  border: 1px solid #000;
+  border-left: none;
+  border-right: none;
+  font-weight: bold;
+}

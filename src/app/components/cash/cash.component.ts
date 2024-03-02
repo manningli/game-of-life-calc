@@ -86,6 +86,7 @@ export class CashComponent {
       fiftyThousands: this.cashForm.controls.fiftyThousands.value,
       hundredThousands: this.cashForm.controls.hundredThousands.value,
     };
+    this.currentPlayer.cashSum = this.getSumTotal();
 
     sessionStorage.setItem('currentPlayer', JSON.stringify(this.currentPlayer));
   }

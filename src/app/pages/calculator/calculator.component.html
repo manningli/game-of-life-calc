@@ -39,4 +39,9 @@
       <app-cash (backClicked)="stepper.previous()" (nextClicked)="stepper.next()"></app-cash>
     </ng-template>
   </mat-step>
+  <mat-step label="Review">
+    <ng-template matStepContent>
+      <app-review (backClicked)="stepper.previous()"></app-review>
+    </ng-template>
+  </mat-step>
 </mat-stepper>

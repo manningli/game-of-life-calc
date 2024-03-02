@@ -11,4 +11,6 @@ export interface Player {
   babiesCount?: number;
   loansCount?: number;
   cashCount?: Cash;
+  cashSum?: number;
+  netWorth?: number;
 }

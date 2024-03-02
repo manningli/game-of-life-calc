@@ -22,6 +22,8 @@ import { PetsComponent } from './components/pets/pets.component';
 import { BabiesComponent } from './components/babies/babies.component';
 import { LoansComponent } from './components/loans/loans.component';
 import { CashComponent } from './components/cash/cash.component';
+import { ReviewComponent } from './components/review/review.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { CashComponent } from './components/cash/cash.component';
     BabiesComponent,
     LoansComponent,
     CashComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { CashComponent } from './components/cash/cash.component';
     FormsModule,
     MatStepperModule,
     MatInputModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

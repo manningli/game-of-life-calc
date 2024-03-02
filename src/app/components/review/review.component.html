@@ -1,0 +1,60 @@
+<div class="review">
+  <div class="intro">
+    {{ currentPlayer.name }}, take a moment to review your totals. <br>
+    Click next to move on to the next player when you're done.
+  </div>
+
+  <div class="review-summary">
+    <table>
+      <tr>
+        <td class="description-col">Retirement Order: {{ getRetirementVerbiage() }}</td>
+        <td class="value-col">{{ getRetirementBonusAmt() | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+      </tr>
+      <tr>
+        <td class="description-col">Houses sold: {{ currentPlayer.houses?.length }}</td>
+        <td class="value-col">{{ getHouseValueSum() | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+      </tr>
+      <tr>
+        <td class="description-col">Action Cards: {{ currentPlayer.actionCardsCount }}</td>
+        <td class="value-col">
+          {{ (currentPlayer.actionCardsCount ?? 0) * 100000 | currency: 'USD' : 'symbol' : '1.0-0'}}
+        </td>
+      </tr>
+      <tr>
+        <td class="description-col">Pets: {{ currentPlayer.petsCount }}</td>
+        <td class="value-col">
+          {{ (currentPlayer.petsCount ?? 0) * 100000 | currency: 'USD' : 'symbol' : '1.0-0'}}
+        </td>
+      </tr>
+      <tr>
+        <td class="description-col">Babies/Children: {{ currentPlayer.babiesCount }}</td>
+        <td class="value-col">
+          {{ (currentPlayer.babiesCount ?? 0) * 50000 | currency: 'USD' : 'symbol' : '1.0-0'}}
+        </td>
+      </tr>
+      <tr>
+        <td class="description-col">Unpaid Loans: {{ currentPlayer.loansCount }}</td>
+        <td class="value-col loans-amount">
+          {{ (currentPlayer.loansCount ?? 0) * -60000 | currency: 'USD' : 'symbol' : '1.0-0'}}
+        </td>
+      </tr>
+      <tr>
+        <td class="description-col">Cash:</td>
+        <td class="value-col">
+          {{ currentPlayer.cashSum | currency: 'USD' : 'symbol' : '1.0-0'}}
+        </td>
+      </tr>
+      <tr>
+        <td class="description-col totals-col">Total Net Worth:</td>
+        <td class="value-col totals-col">
+          {{ getNetWorth() | currency: 'USD' : 'symbol' : '1.0-0'}}
+        </td>
+      </tr>
+    </table>
+
+    <div class="stepper-navigation-buttons">
+      <button mat-flat-button (click)="backBtnClicked()" color="accent">Back</button>
+      <button mat-flat-button (click)="nextBtnClicked()" color="primary">Next</button>
+    </div>
+  </div>
+</div>
