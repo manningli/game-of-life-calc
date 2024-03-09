@@ -21,6 +21,7 @@ export class FinishingOrderComponent implements OnInit {
     { value: '3', viewValue: '3rd to retire: Collect 200k' },
     { value: '4', viewValue: '4th to retire: Collect 100k' },
   ];
+  playerCount: number;
 
   @Output() backClicked = new EventEmitter();
   @Output() nextClicked = new EventEmitter();
@@ -28,6 +29,10 @@ export class FinishingOrderComponent implements OnInit {
   constructor() {
     this.currentPlayer = JSON.parse(
       sessionStorage.getItem('currentPlayer') ?? '{}'
+    );
+
+    this.playerCount = +JSON.parse(
+      sessionStorage.getItem('playerCount') ?? '0'
     );
   }
 
@@ -73,5 +78,12 @@ export class FinishingOrderComponent implements OnInit {
     }
 
     return selectedOrders;
+  }
+
+  isOptionDisabled(option: SelectOption) {
+    return (
+      this.getSelectedRetirementOrders().includes(option.value) ||
+      +option.value > this.playerCount
+    );
   }
 }

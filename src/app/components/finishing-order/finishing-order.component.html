@@ -7,8 +7,7 @@
     <mat-form-field>
       <mat-label>Retirement Order</mat-label>
       <mat-select panelWidth="262px" [formControl]="selectedOrder">
-        <mat-option *ngFor="let option of selectOptions" [value]="option"
-          [disabled]="getSelectedRetirementOrders().includes(option.value)">
+        <mat-option *ngFor="let option of selectOptions" [value]="option" [disabled]="isOptionDisabled(option)">
           {{ option.viewValue }}
         </mat-option>
       </mat-select>
