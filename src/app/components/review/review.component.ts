@@ -84,7 +84,7 @@ export class ReviewComponent {
         .navigateByUrl('/', { skipLocationChange: true })
         .then(() => this.router.navigate(['calculator']));
     } else {
-      console.log('finito');
+      this.router.navigate(['results']);
     }
   }
 

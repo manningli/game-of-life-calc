@@ -24,6 +24,7 @@ import { LoansComponent } from './components/loans/loans.component';
 import { CashComponent } from './components/cash/cash.component';
 import { ReviewComponent } from './components/review/review.component';
 import { MatTableModule } from '@angular/material/table';
+import { ResultsComponent } from './pages/results/results.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatTableModule } from '@angular/material/table';
     LoansComponent,
     CashComponent,
     ReviewComponent,
+    ResultsComponent,
   ],
   imports: [
     BrowserModule,

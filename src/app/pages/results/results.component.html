@@ -1,0 +1,32 @@
+<div class="results">
+  <div class="intro">
+    <h2>And the winner is...</h2>
+    <h1>Congratulations {{ players.at(0)?.name }}, you won the game of life!</h1>
+  </div>
+
+  <div class="rankings">
+    <h3 class="table-title">Rankings:</h3>
+
+    <table mat-table [dataSource]="players" class="mat-elevation-z8 results-table">
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element; let i = index"> {{ i + 1 }}. </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element; let i = index"> {{ element.name }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="netWorth">
+        <th mat-header-cell *matHeaderCellDef> Net Worth </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          {{ element.netWorth | currency: 'USD' : 'symbol' : '1.0-0' }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
